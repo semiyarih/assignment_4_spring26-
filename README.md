@@ -30,7 +30,7 @@ You need to have at least 5 commits
 
 ## Submitting Your Work
 
-Your final submission 02/29/2026  11:59 PM EST.   
+Your final submission 03/01/2026  11:59 PM EST.   
 Make sure all work is committed and pushed and rendered before the due date.
 
 ---
