@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="1_webscraing_files/libs/clipboard/clipboard.min.js"></script>
+<script src="1_webscraing_files/libs/quarto-html/tabby.min.js"></script>
+<script src="1_webscraing_files/libs/quarto-html/popper.min.js"></script>
+<script src="1_webscraing_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="1_webscraing_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="1_webscraing_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="1_webscraing_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <meta name="author" content="HS">
+  <title>WebScraping</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="1_webscraing_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="1_webscraing_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="1_webscraing_files/libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
+  <link href="1_webscraing_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="1_webscraing_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="1_webscraing_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="1_webscraing_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">WebScraping</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+HS 
+</div>
+</div>
+</div>
+
+</section>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
+<ul>
+<li>What is Web scraping? Web scraping or Web harvesting is the process of extracting data from Websites. It involves using <code>Softaware Tools</code> and <code>Programming Languages</code> to automatically collect and analyze data from web pages.</li>
+</ul>
+<p>It is important to note that web scraping can be legally and ethically complex issue, an it may involves collecting data from websites without their permission or in violation of their terms of service. Therefore, it is important to understand the legal and ethical considerations involved in web scraping before using it for any purposes.</p>
+</section>
+
+<section id="data-on-the-web" class="title-slide slide level1 center">
+<h1>Data on the Web</h1>
+<ul>
+<li><p>There are at least 4 ways people download data on the web:</p>
+<ol type="1">
+<li>Click to download a csv/xls/txt file.</li>
+<li>Use a package that interacts with an API.</li>
+<li>Use an API directly.</li>
+<li>Scrape from directly from the HTML file.</li>
+</ol></li>
+</ul>
+</section>
+
+<section>
+<section id="api" class="title-slide slide level1 center">
+<h1>API</h1>
+<ul>
+<li>Organization use a software to act as a gateaway to control the access to data.</li>
+</ul>
+</section>
+<section id="what-does-api-stand-for" class="slide level2">
+<h2>What does API stand for?</h2>
+<ul>
+<li>API stands for Application Programming Interface. So, they use APIs. APIs are like bridges that allow different software systems to communicate and share data or features with each other</li>
+</ul>
+</section>
+<section id="what-is-a-common-form-of-api" class="slide level2">
+<h2>What is a common form of API?</h2>
+<ul>
+<li>A common form of API Known as REpresentational Slate Transfer or <code>REST API</code>.</li>
+<li>It is used to enable communication between different software applications by providing a standardized way to access and exchange data over the internet,</li>
+</ul>
+</section>
+<section id="what-does-api-do" class="slide level2">
+<h2>What does API do?</h2>
+<ul>
+<li>It can control
+<ol type="1">
+<li>Who can access</li>
+<li>What can accesed</li>
+<li>How can it be accesed</li>
+<li>When it can be accessed</li>
+<li>What is returned</li>
+</ol></li>
+</ul>
+</section>
+<section id="what-is-api-endpoint" class="slide level2">
+<h2>What is API <code>ENDPOINT</code>?</h2>
+<ul>
+<li>It is a location of resources to be accessed by an API.(Think of it as a URL)</li>
+<li>API may act as <code>GATEWAYS</code> to many different <code>ENDPOINTS</code> which can be turned <code>open</code> or <code>closed</code>.</li>
+</ul>
+</section>
+<section id="what-is-api-description-document" class="slide level2">
+<h2>What is API <code>DESCRIPTION</code> document?</h2>
+<ul>
+<li>Organization typically published an API description document to provide users information on how to interact with API.</li>
+</ul>
+</section>
+<section id="what-are-the-most-two-formats-that-api-will-return-the-data" class="slide level2">
+<h2>What are the most two formats that API will return the data?</h2>
+<p>These days, most API will return data in form of</p>
+<ol type="1">
+<li>XML or eXtensible Markup Language</li>
+</ol>
+<ul>
+<li>For storing, transforming, and reconstructing arbitrary data.</li>
+<li>Arbitrary data are such as, <code>text</code>, <code>image</code>, <code>audio</code>, <code>video</code>, etc.</li>
+</ul>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<ol start="2" type="1">
+<li>JSON or Java Script Object Notation</li>
+</ol>
+<ul>
+<li>It is relatively easier/simpler than other format (or a lightweight data interchanging format)</li>
+<li>It is easier for human to read and write and easier for machine to parse(process) and generate.</li>
+</ul>
+</section></section>
+<section>
+<section id="authentication" class="title-slide slide level1 center">
+<h1>Authentication</h1>
+<ul>
+<li>Basic authentication
+<ul>
+<li>Some API’s use what is called “Basic authentication”, where you provide a username and password.</li>
+<li>The basic syntax for this is <code>Get("URL", authentication("username","password"))</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<ul>
+<li>API keys and PAT
+<ul>
+<li>More secure APIs now require you to obtain API key or Personal Access Tokens or PAT.</li>
+<li>You may also have to register as developer</li>
+<li>Once you get a key you are responsible for all behavior associated with your key.</li>
+<li><strong>Never save or display your key or PAT in a file you might share</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p>There are two main ways to store your key so you can access it in R.</p>
+<ol type="1">
+<li>Storing in <code>.Renviron</code> file is wasy and does not depend on other libraries to access the key but it leaves your key <strong>exposed</strong> in a plain text file.</li>
+<li>Using the {<code>keyring</code>} package. It keeps your key password protected at the same level as your computer.</li>
+</ol>
+</section></section>
+<section>
+<section id="getting-api" class="title-slide slide level1 center">
+<h1>Getting API</h1>
+
+</section>
+<section id="geting-api-for-open-movie-database-omdb" class="slide level2">
+<h2>Geting API for Open Movie Database (OMDb)</h2>
+<p>Store Access Key</p>
+<ol type="1">
+<li>Using <code>.Renviron</code>.</li>
+</ol>
+<ul>
+<li>Make sure {<code>usethis</code>} package is installed</li>
+<li>Use <strong>console</strong> to open <code>.Renviron</code> file <code>usethis::edit_r_environ()</code></li>
+<li>The <code>.Renviron</code> file will open. Eneter the following into <code>.Renviron</code> file <code>OMBD_API_KEY = &lt;cod...&gt;</code></li>
+</ul>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<ul>
+<li><strong>Question</strong> I do not have the key, how may I get one?
+<ul>
+<li>Go to the <a href="http://www.omdbapi.com/">OMDb</a> website</li>
+<li>On the banner on top of the page click <strong>API Key</strong></li>
+<li>Select <em>FREE</em>, then enter your <em>Email</em>, <em>Name</em>, and <em>Use</em></li>
+<li>The key will be emailed to you within one hour. Please do not lose it, as you will be unable to retrieve it unless you open a new account. One way to find the key is to search for “OMDB” in your email inbox. If you haven’t temporarily deleted the email, you should be able to locate the message that contains the code.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="section-4" class="title-slide slide level1 center">
+<h1></h1>
+<ul>
+<li>Restart R (restart R often during development)<br>
+
+<ul>
+<li><code>Session</code> &gt; Restart R<br>
+</li>
+<li>CTRL + SHFT + fn + F10 or CTRL + SHFT + F10</li>
+</ul></li>
+<li>You can always access your private using the function<br>
+<code>Sys.getenv(&lt;key name&gt;)</code><br>
+The key name for this API is “OMDB_API_KEY”.<br>
+</li>
+</ul>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<ul>
+<li>First you need to set it.
+<ul>
+<li>Set your API key in your environment file or directly in your session:<br>
+Sys.setenv(OMDB_API_KEY = “your_api_key_here”)`</li>
+</ul></li>
+<li>Retrieve the API key with Sys.getenv(): <code>Sys.getenv("OMDB_API_KEY")</code><br>
+</li>
+</ul>
+</section></section>
+<section>
+<section id="section-6" class="title-slide slide level1 center">
+<h1></h1>
+<ol start="2" type="1">
+<li>Using the {<code>keyring</code>} package to store and access PAT</li>
+</ol>
+<ul>
+<li>Install and load {<code>keyring</code>} package</li>
+<li>In <em>console</em> type</li>
+<li><code>key_set("key_name")</code>
+<ul>
+<li>The key name is “OMDB_API_KEY_SECURE”</li>
+<li>Type in console then</li>
+<li><code>key_set("OMDB_API_KEY_SECURE")</code></li>
+<li>To get the key type</li>
+<li><code>key_get("OMDB_API_KEY_SECURE")</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<p>A person with access to oyour computer who knows R and the {<code>keyring</code>} package could still get your key. But it is more secure than placing your key in plain text file like <code>.Renviron</code></p>
+</section></section>
+<section>
+<section id="using-your-key-in-your-code" class="title-slide slide level1 center">
+<h1>Using Your Key in Your Code</h1>
+<ul>
+<li>You could access your key and save it to a variable for example
+<ul>
+<li><code>my_key &lt;- key_get("OMDB_API_KEY_SECURE")</code> However, that exposes your key in the global environment and <code>.Rhistory</code>.</li>
+<li><code>.Rhistory</code>: It is a history of code executed not written</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<ul>
+<li>A better approach is to use <code>key_get("OMDB_API_KEY_SECURE")</code> or <code>Sys.getenv("OMDB_API_KEY")</code> inside of your API function to access your credential without creating an intermediate variable.
+<ul>
+<li><code>x &lt;- GET(url = "URL", apikey = key_get("key-name"))</code></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="directly-access-apis" class="title-slide slide level1 center">
+<h1>Directly Access APIs</h1>
+
+</section>
+<section id="using-httr-package-to-directly-access-apis" class="slide level2">
+<h2>Using {<code>httr</code>} package to directly access APIs</h2>
+<ul>
+<li><p>Most website APIs use HTTP or Hyper Text Transfet Protocol. It is a language for querying and obtaining data. We will not learn HTTP here, but we will use R’s {<code>httr</code>} package to inteface with APIs through HTTP.</p></li>
+<li><p><strong>Note: Every API is different, so you always have to figure out how to interact with a new API</strong></p></li>
+</ul>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<ul>
+<li>API should have documentation, so you can read to understand key info:
+<ul>
+<li>What parameters you can send For instance you may go to <a href="http://www.omdbapi.com/">OMDb</a> website and on top of the page click on <em>Parameters</em></li>
+<li>How do you need to send them</li>
+<li>What data you should get back based on the values of parameters.</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<ul>
+<li><strong>Question:</strong> How to find the API documentation for a website?
+<ul>
+<li>Easiest way is to use google: Use a query like: “API documentation site:example.com” (replacing example.com with the actual website domain).</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<ul>
+<li><strong>Question:</strong> Is {<code>httr</code>} package installed?
+<ul>
+<li>Type
+<ul>
+<li><code>install.packages()</code> in console. It will return all install packages</li>
+<li><code>require(httr)</code></li>
+<li>If package is not installed it tells you</li>
+<li>If package is installed it tells you that you need to load it</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<pre><code>    -   `installed.packages()` returns detailed data about installed packages
+    -   `find.package("pkg-name")` returns path to installed package or return an error
+    -   There are a lot more, such as `pacman()`, ...</code></pre>
+</section></section>
+<section>
+<section id="section-13" class="title-slide slide level1 center">
+<h1></h1>
+<ul>
+<li>install and load {<code>httr</code>} package</li>
+<li>The six most common <code>httr</code> functions are
+<ul>
+<li><code>GET()</code>: Fetches data from a URL</li>
+<li><code>PATH()</code></li>
+<li><code>POST()</code></li>
+<li><code>HEAD()</code></li>
+<li><code>PUT()</code></li>
+<li><code>DELETE()</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<ul>
+<li><strong>There are two important parts to HTTP,</strong>
+<ul>
+<li>The <em>REQUEST</em> the data sent to the <em>SERVER</em></li>
+<li>The <em>RESPONSE</em> the data sent back from the <em>SERVER</em></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="get" class="title-slide slide level1 center">
+<h1>GET()</h1>
+<ul>
+<li>Fetches data from a URL</li>
+<li>`GET(url = “URL”, query = list( , , )) - <code>URL</code>: is the URL where API request should be sent - <code>query()</code>: to modify the parameters of your request</li>
+</ul>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<ul>
+<li>Type the following code <code>GET("https://httpbin.org/get")</code>
+<ul>
+<li>It returns useful information such as
+<ul>
+<li>Response [https://httpbin.org/get]</li>
+<li>Date: 2024-11-04 00:46</li>
+<li>Status: 200</li>
+<li>Content-Type: application/json</li>
+<li>Size: 367 B</li>
+<li>AND MORE</li>
+</ul></li>
+<li>Status: 200 means the request has succeeded</li>
+</ul></li>
+</ul>
+</section></section>
+<section id="example" class="title-slide slide level1 center">
+<h1>Example</h1>
+<ul>
+<li>we’re searching for the movie “Inception” by title from <a href="http://www.omdbapi.com/">OMDb</a> website</li>
+</ul>
+</section>
+
+<section>
+<section id="decennial-census-and-american-community-survey-acs" class="title-slide slide level1 center">
+<h1>Decennial Census and American Community Survey (ACS)</h1>
+
+</section>
+<section id="the-decennial-census" class="slide level2">
+<h2>The Decennial Census:</h2>
+<ul>
+<li>It is a complete population count that happens <strong>every 10 years</strong> in the U.S. It gathers basic information, like age, race, and housing, from every household to help plan for things like schools, roads, and public services.</li>
+</ul>
+</section>
+<section id="the-american-community-survey-acs" class="slide level2">
+<h2>The American Community Survey (ACS):</h2>
+<ul>
+<li>It is an ongoing survey that collects more detailed data on topics like education, income, and employment. Instead of every 10 years, it samples a smaller group of people <strong>every year</strong> to give communities updated information between censuses.</li>
+</ul>
+</section></section>
+<section>
+<section id="register-for-a-census-data-api-key" class="title-slide slide level1 center">
+<h1>Register for a Census Data API Key:</h1>
+<ul>
+<li>You need a Census API key to access U.S. Census data through the tidycensus package. The Census Bureau provides this key for free, and it’s a one-time setup.</li>
+<li>You can request key by visiting the <a href="https://api.census.gov/data/key_signup.html">Request a U.S. Census Data API Key</a></li>
+<li>Enter your email address, and they’ll send you a key.</li>
+</ul>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<ul>
+<li>Once you’ve registered, they’ll email you a key. You can then load it in R using the following command: <code>census_api_key("your_census_api_key", install = TRUE)</code></li>
+</ul>
+</section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>{<code>tidycensus</code>} Package allows user to interface with the US Census Bureau</p></li>
+<li><p><strong>install and load the package</strong></p></li>
+<li><p>What is API <code>ENDPOINT</code>?</p>
+<ul>
+<li>It is a fancy word for URL of a server or service.</li>
+<li>APIs operate through request and responses. When an API requests to access data from a server, a response is always sent back.</li>
+<li>The location where the API sends a request and where the response emanates (originated from, be produced by) is known as <em>endpoints</em>.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="searching-census-bureau-variable-id" class="title-slide slide level1 center">
+<h1>Searching Census Bureau Variable ID</h1>
+<ul>
+<li>There are thousands of variable ID across the different Census Bureau files and their IDs, are not consistent.</li>
+<li>Getting variable from <em>decennial census</em> or <em>ACS</em> requires knowing the variable ID for specific product (year(s))</li>
+</ul>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>Use function <code>load_variables()</code> function. Two requirements</p>
+<ul>
+<li>The <em>year of the census</em> or the <em>end year of ACS</em> sample</li>
+<li>The data set: “sf1”, “sf3”, “acs”, or “acs1”</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<ul>
+<li>For ideal functionality, assign output to variable, setting <code>cache = TRUE</code>, to store result in your computer for future access. Then you can view the function in RStudio to interactively browse for variable or use <code>filter(str_detect())</code> if you know part of the name, or concept.</li>
+</ul>
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<ul>
+<li><a href="https://www.rdocumentation.org/packages/tidycensus/versions/1.6.3/topics/load_variables">load_variables()</a>: Finding the right variables to use with get_decennial() or get_acs() can be challenging; load_variables() attempts to make this easier for you.</li>
+</ul>
+</section></section>
+<section>
+<section id="load_variables" class="title-slide slide level1 center">
+<h1><code>load_variables()</code></h1>
+<ul>
+<li><p>Type <code>var17 &lt;- load_variables(2017, "acs5", cache = TRUE)</code> to load variables for the 2017 ACS 5-Year Estimates.</p></li>
+<li><p>Preview the variables head(var17)</p></li>
+</ul>
+</section>
+<section id="section-21" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>You can search for variables by partial name or a concept. Here, we’ll filter variables that contain “income.” <code>income_vars &lt;- var17 %&gt;%    filter(str_detect(label, regex("income", ignore_case = TRUE)))</code></p></li>
+<li><p>View the income-related variables <code>print(income_vars)</code></p></li>
+</ul>
+</section>
+<section id="section-22" class="slide level2">
+<h2></h2>
+<ul>
+<li><code>get_acs()</code> to pull the actual data. For example, let’s pull median household income by county.</li>
+</ul>
+<p><code>income_data &lt;- get_acs(geography = "county",                         variables = "B19013_001", # Median Household Income                        year = 2017)</code> ##</p>
+</section></section>
+<section id="using-json-structured-data" class="title-slide slide level1 center">
+<h1>Using JSON Structured DATA</h1>
+<ul>
+<li>Java Script Object Notation</li>
+<li>JSON uses conventions familia to programmers for many languages so it is an ideal data interchange language. for example</li>
+</ul>
+<pre><code>{
+  "name": "John",
+  "age": 30
+}</code></pre>
+</section>
+
+<section id="section-23" class="title-slide slide level1 center">
+<h1></h1>
+<ul>
+<li><p>JSON uses a simple format with keys and values in curly braces {}.</p></li>
+<li><p>In programming:</p>
+<ul>
+<li>Key: The name or label (e.g., “name”).</li>
+<li>Value: The information or data assigned to that key (e.g., “John”).</li>
+<li>A key and value separated by a colon <code>:</code>
+<ul>
+<li>Example: <code>"age": 30</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section>
+<section id="json-r-package" class="title-slide slide level1 center">
+<h1>JSON-R Package</h1>
+
+</section>
+<section id="there-are-multiple-packages-working-with-json" class="slide level2">
+<h2>There are multiple packages working with JSON</h2>
+<ul>
+<li>{<code>jsonlite</code>} package is a JSON parser/generator optimized for the web. It has bidirectional mapping between JSON data and the most important R data types.
+<ul>
+<li>Simplification is process by which JSON arrays are automatically converted from a list into more specific R class.</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<pre><code>-   The [fromJSON()](https://www.rdocumentation.org/packages/rjson/versions/0.2.23/topics/fromJSON) function has 3 arguments which control the simplification process:
+    -   `simplifyVector`
+    -   `simplfyDtatFrame`
+    -   `simplifyMatrix`</code></pre>
+<ul>
+<li>The {<code>tidyjson</code>} package takes an alternate approach to structuring <em>JSON data</em> into <em>tidy data</em></li>
+</ul>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="1_webscraing_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="1_webscraing_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="1_webscraing_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="1_webscraing_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="1_webscraing_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="1_webscraing_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="1_webscraing_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="1_webscraing_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="1_webscraing_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="1_webscraing_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
